@@ -1,0 +1,14 @@
+---
+##- include: handlers/main.yaml
+- hosts: server1
+  become_method: sudo
+  become_user: root
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: Creating User 'testuser1'
+      user:
+      args:
+       name: testuser1
+       group: users
+##      debug: msg={{ tomcat_location }}

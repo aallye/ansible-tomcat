@@ -1,0 +1,27 @@
+---
+
+- name: Unpack Source
+  unarchive: src={{ tomcat_location }}/output/build/bin/commons-daemon-native.tar.gz dest={{ dest_location}} copy=no mode=ug+rw
+  tags: [tomcat,launchprep]
+
+- name: Configure Launch File
+  shell: ./configure  --with-java=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.71-1.b15.el6_7.x86_64
+  args:
+   chdir:  "{{ dest_location }}/commons-daemon-1.0.15-native-src/unix"
+  become_user: root
+  become: yes
+  tags: [tomcat,launchprep]
+ 
+- name: Building Launch File
+  shell: make
+  args:
+   chdir:  "{{ dest_location }}/commons-daemon-1.0.15-native-src/unix"
+  become_user: root
+  become: yes
+  tags: [tomcat,launchprep]
+
+- name: Copying Launch File to Bin
+  shell: cp  "{{ dest_location }}/commons-daemon-1.0.15-native-src/unix/jsvc" "{{ tomcat_location }}/output/build/bin/"
+  args:
+   chdir:  "{{ dest_location }}/commons-daemon-1.0.15-native-src/unix"
+  tags: [tomcat,launchprep]  

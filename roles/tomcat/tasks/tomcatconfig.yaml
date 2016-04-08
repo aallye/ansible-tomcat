@@ -1,0 +1,8 @@
+---
+- name: Initial Tomcat Configuration
+  shell: "{{ inventory_dir }}/scripts/tomcatconf.sh"
+  tags: [tomcat,config]
+
+- name: Configuring Tomcat Users and Starting Tomcat using Template
+  template: src=tomcat-users.xml.j2  dest="{{ tomcat_location }}/output/build/conf/tomcat-users.xml"
+  tags: [tomcat,config]

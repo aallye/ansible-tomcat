@@ -1,0 +1,8 @@
+---
+
+#- include: cleansrc.yaml
+- include: tomcatdownload.yaml
+- include: tomcatconfig.yaml
+- include: tomcatlaunchprep.yaml
+##- include: tomcattst.yaml
+- include: tomcatwar.yaml

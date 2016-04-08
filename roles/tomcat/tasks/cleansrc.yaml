@@ -1,0 +1,22 @@
+---
+
+ - hosts: server1
+   gather_facts: no
+   become_method: sudo
+   become_user: root
+   become: yes
+##   tasks:
+##     - name: Test Task1
+##       debug: msg="TEST" 
+   tasks:
+     - name: Removing Data From SRC folder
+       shell: rm -fr /var/local/ansible/tomcatsrc/* 
+##       args:
+##         chdir:  /var/local/ansible/tomcatsrc
+       notify: stop tomcat
+##      args:
+###         chdir:  "{{ tomcat_location }}"
+
+   handlers:
+    - include: ../handlers/main.yaml
+#

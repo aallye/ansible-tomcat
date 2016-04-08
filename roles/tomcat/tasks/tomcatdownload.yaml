@@ -1,0 +1,15 @@
+---
+
+- name: Download Source
+  get_url: url={{ tomcat_src_url }} dest={{ dest_location}}
+  tags: [download,tomcat]
+
+- name: Unpack Source
+  unarchive: src={{ dest_location}}/{{ tomcat_archive_name }} dest={{ dest_location}} copy=no mode=ug+rw
+  tags: [download,tomcat]
+
+- name: Compiling TomCat with ANT
+  shell: ant
+  args:
+   chdir:  "{{ tomcat_location }}"
+  tags: [download,tomcat]

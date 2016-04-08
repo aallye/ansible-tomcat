@@ -1,0 +1,17 @@
+---
+##- include: handlers/main.yaml
+- hosts: server1
+  gather_facts: no
+  tasks:
+    - name: Test Template
+      template: src=templates/tomcat-users.xml.j2  dest="{{ tomcat location }}/output/build/conf/tomcat-users.xml
+#      debug: msg={{ tomcat_location }}
+#      changed_when: true
+#      notify: start tomcat
+#    - name: Configure and Start Tomcat
+#      shell: /var/local/ansible/tomcat/files/tomcatconf.sh > /var/local/ansible/tomcat/tomcatconf.log &
+#      args:
+#         chdir:  "{{ tomcat_location }}"
+ 
+  handlers:
+  - include: handlers/main.yaml

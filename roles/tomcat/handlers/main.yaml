@@ -1,0 +1,24 @@
+---
+
+- name: start tomcat
+##  debug: msg="AHAA"
+##  shell: nohup {{ tomcat_location }}/output/build/bin/catalina.sh start &
+  shell:  "{{ inventory_dir }}/scripts//tomcatinit.sh start"
+
+- name: restart tomcat
+##  shell: "{{ tomcat_location }}/output/build/bin/catalina.sh stop; nohup {{ tomcat_location }}/output/build/bin/catalina.sh start &"
+#  shell: /var/local/ansible/tomcat/roles/tomcat/files/tomcatinit.sh restart
+  shell:  "{{ inventory_dir }}/scripts//tomcatinit.sh restart"
+
+
+
+- name: stop tomcat
+##  debug: msg="AHAA"
+##  shell: "{{ tomcat_location }}/output/build/bin/catalina.sh stop"
+#  shell: /var/local/ansible/tomcat/roles/tomcat/files/tomcatinit.sh stop 
+  shell:  "{{ inventory_dir }}/scripts//tomcatinit.sh stop"
+
+
+- name: test handler
+  debug: 
+    msg: "Test Handler"

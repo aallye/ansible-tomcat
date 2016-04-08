@@ -1,0 +1,8 @@
+---
+
+tomcat_src_url: http://www.webhostingjams.com/mirror/apache/tomcat/tomcat-9/v9.0.0.M4/src/apache-tomcat-9.0.0.M4-src.tar.gz
+tomcat_archive_name: "{{ tomcat_src_url.split('src/')[1] }}"
+tomcat_location: "{{ dest_location }}/{{ tomcat_archive_name.split('.tar')[0] }}"
+dest_location: /var/local/ansible/tomcatsrc
+tomcatwar_src_url:  https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/sample.war
+tomcat_source: TEST
