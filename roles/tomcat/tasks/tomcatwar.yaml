@@ -6,13 +6,8 @@
    validate_certs: False
   tags: [tomcat,war]
 
-- name: Configure and Start Tomcat
-  shell: /var/local/ansible/tomcat/files/tomstart.sh > /var/local/ansible/tomcat/tomstart.log &
-  notify: restart tomcat
+- name: Starting Tomcat
+  debug: msg="Starting TomCat using notification"
+  changed_when: true
+  notify: start tomcat
   tags: [tomcat,war]
-##      args:
-##         chdir:  "{{ tomcat_location }}"
-#
-#  handlers:
-#  - include: handlers/main.yaml
-#
