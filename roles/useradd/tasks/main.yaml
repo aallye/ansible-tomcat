@@ -1,0 +1,9 @@
+---
+- name: Creating User 'testuser1'
+  user:
+  args:
+   name: "{{ user_name }}"
+   group: "{{ user_group }}"
+  become_method: sudo
+  become_user: root
+  become: yes

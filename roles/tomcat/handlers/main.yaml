@@ -4,6 +4,8 @@
 ##  debug: msg="AHAA"
 ##  shell: nohup {{ tomcat_location }}/output/build/bin/catalina.sh start &
   shell:  "{{ inventory_dir }}/scripts//tomcatinit.sh start"
+  become_user: "{{ tomcat_launch_user }}"
+  become: yes
 
 - name: restart tomcat
 ##  shell: "{{ tomcat_location }}/output/build/bin/catalina.sh stop; nohup {{ tomcat_location }}/output/build/bin/catalina.sh start &"

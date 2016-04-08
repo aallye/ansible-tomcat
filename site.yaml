@@ -3,4 +3,6 @@
 - hosts: server1
   gather_facts: no
   roles:
+   - useradd
    - tomcat
+#   - useradd

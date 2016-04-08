@@ -16,7 +16,11 @@
        notify: stop tomcat
 ##      args:
 ###         chdir:  "{{ tomcat_location }}"
-
+   tasks:
+     - name: Removing 'testuser1'
+       shell: userdel -f testuser1 
+       ignore_errors: yes
+#
    handlers:
     - include: ../handlers/main.yaml
 #
