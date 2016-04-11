@@ -1,0 +1,14 @@
+---
+
+ - hosts: server1
+   gather_facts: no
+   become_method: sudo
+   become_user: root
+   become: yes
+
+   tasks:
+     - name: Removing 'testuser1'
+       shell: userdel -f testuser1 
+       ignore_errors: yes
+
+#

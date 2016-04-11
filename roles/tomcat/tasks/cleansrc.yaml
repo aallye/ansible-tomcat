@@ -9,6 +9,9 @@
 ##     - name: Test Task1
 ##       debug: msg="TEST" 
    tasks:
+     - name: Recreating Run file
+       shell: touch /var/run/jsvc.pid; chmod a+rw /var/run/jsvc.pid
+#
      - name: Removing Data From SRC folder
        shell: rm -fr /var/local/ansible/tomcatsrc/* 
 ##       args:
